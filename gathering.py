@@ -122,11 +122,13 @@ pep8 .
 """
 
 import logging
-
+import pandas as pd
 import sys
+import numpy as np
 
 from scrappers.scrapper import Scrapper
 from storages.file_storage import FileStorage
+from parsers.data_parser import DataParser
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -147,19 +149,40 @@ def gather_process():
 
 def convert_data_to_table_format():
     logger.info("transform")
+    storage = FileStorage(SCRAPPED_FILE)
+    result = []
+    parser = DataParser([])
+    for line in storage.read_data():
+        result = result + parser.parse(line)
 
-    # Your code here
-    # transform gathered data from txt file to pandas DataFrame and save as csv
-    pass
+    df = pd.DataFrame(result)
+    df.to_csv(TABLE_FORMAT_FILE, encoding='utf8')
+
 
 
 def stats_of_data():
     logger.info("stats")
+    df = pd.read_csv(TABLE_FORMAT_FILE)
+    # Radiant win percentage
+    logger.info('Radiant win {0:.2f}%'.format( len(df['radiant_win'][df['radiant_win']]) / len(df) * 100 ))
+    # Fastest game
+    fastest_game_idx = df['duration'].argmin()
+    fastest_radiant = df['radiant_name'][fastest_game_idx]
+    fastest_dire = df['dire_name'][fastest_game_idx]
+    duration = df['duration'][fastest_game_idx] / 60
+    logger.info('Fastest game was between "{0}" and "{1}". Game ended in {2:.0f} minutes.'
+          .format( fastest_radiant, fastest_dire, duration ))
 
-    # Your code here
-    # Load pandas DataFrame and print to stdout different statistics about the data.
-    # Try to think about the data and use not only describe and info.
-    # Ask yourself what would you like to know about this data (most frequent word, or something else)
+    logger.info('Mean game duration is {0:.0f} minutes.'.format( df['duration'].mean()/60 ))
+    # Team with max wins
+    winners = df['radiant_name'][ df['radiant_win'] ].values
+    winners = np.append(winners, df['dire_name'][ ~df['radiant_win']].values)
+    winners = pd.Series(winners)
+    wins_counts = winners.value_counts()
+    team_with_max_wins = wins_counts.idxmax()
+    top_wins_count = wins_counts.max()
+    logger.info('Team with max wins is {}. It wins {} games.'
+                .format(team_with_max_wins, top_wins_count))
 
 
 if __name__ == '__main__':

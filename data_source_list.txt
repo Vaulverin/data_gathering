@@ -1,0 +1,20 @@
+https://docs.opendota.com/ # Статистика по матчам Dota2
+https://www.reddit.com/r/cats/ # Фото котов
+https://www.kinopoisk.ru/ # Фильмы
+https://www.kaggle.com/hugomathien/soccer # The ultimate Soccer database for data analysis and machine learning
+https://mlbootcamp.ru/round/10/sandbox/ # Задача "Выход из он-лайн игры"
+https://mlbootcamp.ru/round/12/sandbox/ # Задача "Предсказание ССЗ"
+https://www.kaggle.com/tmdb/tmdb-movie-metadata # TMDB 5000 Movie Dataset
+https://aws.amazon.com/ru/datasets/google-books-ngrams/ # Google Books Ngrams
+http://www.cs.cmu.edu/~enron/ #Enron Email Dataset
+http://tomslee.net/airbnb-data-collection-get-the-data # Airbnb Data Collection: Get the Data
+https://www.yelp.com/dataset #Yelp Open Dataset
+https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting/data #Walmart Recruiting - Store Sales Forecasting
+https://data.medicare.gov/data/hospital-compare #Hospital Compare datasets
+https://wonder.cdc.gov/ # The Center for Disease Control control maintains a database on cause of death.
+http://poker.sibnsk.net/viewforum.php?f=248 # Poker hand histories
+https://labrosa.ee.columbia.edu/millionsong/ #Million Song Dataset
+https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/ # dataset200,000+ Jeopardy! Questions in a JSON file
+https://developer.twitter.com/en/docs # Twitter API
+https://developer.github.com/v3/ # GitHhub API
+https://vk.com/dev/methods # vk.com API
